@@ -31,15 +31,17 @@ const Button = styled.button`
 const CountdownTimer = () => {
   const [minutes, setMinutes] = useState("");
   const [seconds, setSeconds] = useState("");
+  const [minutes2, setMinutes2] = useState("");
+  const [seconds2, setSeconds2] = useState("");
   const [time, setTime] = useState(`00:00`);
   const [isStarted, setIsStarted] = useState(false);
   const handleMinute = (e) => {
     const { value } = e.target;
-    setMinutes(value);
+    setMinutes2(value);
   };
   const handleSeconds = (e) => {
     const { value } = e.target;
-    setSeconds(value);
+    setSeconds2(value);
   };
   useEffect(() => {
     if (minutes && seconds && isStarted) {
@@ -67,6 +69,9 @@ const CountdownTimer = () => {
   }, [minutes, seconds, isStarted]);
   const startHandler = () => {
     setIsStarted(true);
+    // copy value from minutes 2 to minutes and set isStarted=true
+    setMinutes(minutes2);
+    setSeconds(seconds2);
   };
   const pauseOrResumeHandler = () => {
     setIsStarted(!isStarted);
@@ -74,6 +79,8 @@ const CountdownTimer = () => {
   const resetHandler = () => {
     setMinutes("");
     setSeconds("");
+    setMinutes2("");
+    setSeconds2("");
     setTime("00:00");
     setIsStarted(false);
   };
@@ -81,11 +88,13 @@ const CountdownTimer = () => {
     <Container>
       <Header data-testid="running-clock">Countdown Timer</Header>
       <label>
-        <Input type="number" onChange={handleMinute} value={minutes} />
+        {/* <Input type="number" onChange={handleMinute} value={minutes} /> */}
+        <Input type="number" onChange={handleMinute} value={minutes2} />
         Minutes
       </label>
       <label>
-        <Input type="number" onChange={handleSeconds} value={seconds} />
+        <Input type="number" onChange={handleSeconds} value={seconds2} />
+        {/* <Input type="number" onChange={handleSeconds} value={seconds} /> */}
         Seconds
       </label>
       <Header data-testid="running-clock">{time}</Header>
