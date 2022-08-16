@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import styled from "styled-components";
 
 const Input = styled.input`
   padding: 0.5rem;
   margin: 0.5rem;
-  color: ${(props) => props.inputColor || "palevioletred"};
+  color: "palevioletred";
   background: papayawhip;
   border: none;
   border-radius: 3px;
@@ -34,14 +34,14 @@ const Button = styled.button`
 `;
 
 const Multiples = () => {
-  const [number, setNumber] = useState("");
-  const [result, setResult] = useState([]);
-  const handleChange = (e) => {
+  const [number, setNumber] = useState<number>(1);
+  const [result, setResult] = useState<Array<any>>([]);
+  const handleChange = (e: { target: { value: any; }; }) => {
     const { value } = e.target;
     setNumber(value);
     setResult([]);
   };
-  const handleClick = (e) => {
+  const handleClick = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     let dummy = [];
     if (number) {
@@ -52,7 +52,7 @@ const Multiples = () => {
     }
   };
   const reset = () => {
-    setNumber("");
+    setNumber(1);
     setResult([]);
   };
   return (

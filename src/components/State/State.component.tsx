@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import Regions from "../Regions/Regions.component";
 const State = () => {
-  const [isCollapsible, setIsCollapsible] = useState(false);
-  const [index, setIndex] = useState(null);
+  const [isCollapsible, setIsCollapsible] = useState<boolean>(false);
+  const [index, setIndex] = useState<number | null>(null);
   const data = [
     {
       name: "Asia",
@@ -62,25 +62,28 @@ const State = () => {
       ],
     },
   ];
-  const handleClick = (e, index) => {
+  const handleClick = (e: any, index: any) => {
     e.stopPropagation();
     setIndex(index);
     setIsCollapsible(!isCollapsible);
   };
-  return data.map((x, i) => (
-    <div key={x.name} style={{padding: "0.5rem"}}>
-      <span className={x.name} onClick={(e) => handleClick(e, i, x.name)}>
-        {isCollapsible && index === i ? (
-          <strong>{`- ${x.name}`}</strong>
-        ) : (
-          <strong>{`+ ${x.name} `}</strong>
-        )
-        }
-        {isCollapsible && index === i ? (
-          <Regions key={x.name} regions={x.regions} />
-        ) : null}
-      </span>
-    </div>
-  ));
+  return (
+    <>
+      {data.map((x, i) => (
+        <div key={x.name} style={{ padding: "0.5rem" }}>
+          <span className={x.name} onClick={(e) => handleClick(e, i)}>
+            {isCollapsible && index === i ? (
+              <strong>{`- ${x.name}`}</strong>
+            ) : (
+              <strong>{`+ ${x.name} `}</strong>
+            )}
+            {isCollapsible && index === i ? (
+              <Regions key={x.name} regions={x.regions} />
+            ) : null}
+          </span>
+        </div>
+      ))}
+    </>
+  );
 };
 export default State;
