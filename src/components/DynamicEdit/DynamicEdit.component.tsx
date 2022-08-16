@@ -51,10 +51,7 @@ export default function DynamicEdit() {
     e.stopPropagation();
     setIsClicked([...isClicked, i]);
   };
-  const saveOnClick = (_$event: // Task
-    // 1. once you click on button then input in the response should be displayed, add the inputs one below the other
-    // 2. once you click on the <p> --> input box will be opened with input , edit the line item and update it
-    React.MouseEvent<HTMLButtonElement, MouseEvent>, i: number) => {
+  const saveOnClick = (_$event: React.MouseEvent<HTMLButtonElement, MouseEvent>, i: number) => {
     console.log(isClicked)
     setIsClicked(isClicked.filter((e) => e !== i));
   };

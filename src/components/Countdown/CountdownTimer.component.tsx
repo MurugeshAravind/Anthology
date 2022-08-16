@@ -68,7 +68,6 @@ const CountdownTimer = () => {
   }, [minutes, seconds, isStarted]);
   const startHandler = () => {
     setIsStarted(true);
-    // copy value from minutes 2 to minutes and set isStarted=true
     setMinutes(minutes2);
     setSeconds(seconds2);
   };
@@ -87,13 +86,11 @@ const CountdownTimer = () => {
     <Container>
       <Header data-testid="running-clock">Countdown Timer</Header>
       <label>
-        {/* <Input type="number" onChange={handleMinute} value={minutes} /> */}
         <Input type="number" onChange={handleMinute} value={minutes2} />
         Minutes
       </label>
       <label>
         <Input type="number" onChange={handleSeconds} value={seconds2} />
-        {/* <Input type="number" onChange={handleSeconds} value={seconds} /> */}
         Seconds
       </label>
       <Header data-testid="running-clock">{time}</Header>
