@@ -10,14 +10,14 @@ export default function DynamicEdit() {
   const [changedValueOnClick, setChangedValueOnClick] = useState([]);
   const [isClicked, setIsClicked] = useState([]);
   const save = (e) => {
-    if (e.keyCode == 13) {
+    if (e.keyCode === 13) {
       if (newValue.trim().length > 0) {
         onClickHandler();
       }
     }
   };
   const handleEscape = (e, i) => {
-    if (e.keyCode == 27) {
+    if (e.keyCode === 27) {
       setIsClicked(isClicked.filter((e) => e !== i));
     }
   };
