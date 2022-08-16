@@ -53,8 +53,7 @@ const CountdownTimer = () => {
             setMinutes((minutes) => String(minutes - 1).padStart(2, "0"));
             setSeconds("59");
           } else if (minutes === "00") {
-            console.log("comes inside the else if");
-            setMinutes("00");
+            setTime(`00:00`)
             setIsStarted(false);
           }
         } else {
