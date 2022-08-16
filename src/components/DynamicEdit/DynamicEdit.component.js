@@ -4,7 +4,6 @@
 // 2. once you click on the <p> --> input box will be opened with input , edit the line item and update it
 
 import React, { useState } from 'react';
-import './style.css';
 
 export default function DynamicEdit() {
   const [newValue, addNewValue] = useState('');
